@@ -104,6 +104,9 @@ define Package/netdata-ssl/install
 	$(INSTALL_BIN) ./files/netdata.init $(1)/etc/init.d/netdata
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/netdata.config $(1)/etc/config/netdata
+	$(INSTALL_DIR) $(1)/etc/nginx/conf.d
+	$(INSTALL_DATA) ./files/netdata.locations $(1)/etc/nginx/conf.d/netdata.locations
+	$(INSTALL_DATA) ./files/netdata.htpasswd  $(1)/etc/nginx/conf.d/netdata.htpasswd
 endef
 
 $(eval $(call BuildPackage,netdata-ssl))

@@ -68,6 +68,7 @@ CONFIGURE_ARGS += \
 	--disable-cloud
 
 define Package/netdata-ssl/conffiles
+/etc/config/netdata
 /etc/netdata/
 endef
 
@@ -95,6 +96,8 @@ define Package/netdata-ssl/install
 	rm -rf $(1)/usr/share/netdata/web/old
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/netdata.init $(1)/etc/init.d/netdata
+	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_CONF) ./files/netdata.config $(1)/etc/config/netdata
 endef
 
 $(eval $(call BuildPackage,netdata-ssl))

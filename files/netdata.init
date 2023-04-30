@@ -11,12 +11,12 @@ config_load 'netdata'
 get_config() {
 	config_get_bool enabled $1 enabled 0
 	config_get port $1 port 19999
-	config_get_bool ssl $1 ssl_sw 0
+	config_get_bool ssl $1 enable_ssl 0
 	config_get cert_file $1 cert_file '/etc/netdata/cert.crt'
 	config_get key_file $1 key_file '/etc/netdata/cert.key'
 	config_get_bool ennginx $1 nginx_support 0
 	config_get_bool auth $1 auth 0
-	config_get userpw $1 userpw 'admin:$apr1$t7qQjoqb$YBHtAb7VGSkjIdObMG.Oy0'
+	config_get userpw $1 user_passwd 'admin:$apr1$t7qQjoqb$YBHtAb7VGSkjIdObMG.Oy0'
 }
 
 #read_option <option>

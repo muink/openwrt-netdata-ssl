@@ -28,15 +28,19 @@ PKG_BUILD_FLAGS:=no-mips16 gc-sections
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/netdata
+define Package/netdata-ssl
   SECTION:=admin
   CATEGORY:=Administration
-  DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c
+  DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +libopenssl
   TITLE:=Real-time performance monitoring tool
   URL:=https://www.netdata.cloud/
+  #PROVIDES:=netdata
+  #CONFLICTS:=netdata
+  #VARIANT:=ssl
+  #DEFAULT_VARIANT:=1
 endef
 
-define Package/netdata/description
+define Package/netdata-ssl/description
   netdata is a highly optimized Linux daemon providing real-time performance
   monitoring for Linux systems, applications and SNMP devices over the web.
 
@@ -53,7 +57,6 @@ CONFIGURE_ARGS += \
 	--enable-lto \
 	--disable-ebpf \
 	--without-libcap \
-	--disable-https \
 	--disable-dbengine \
 	--disable-compression \
 	--disable-plugin-nfacct \
@@ -70,11 +73,11 @@ define Build/Configure
 	$(Build/Configure/Default)
 endef
 
-define Package/netdata/conffiles
+define Package/netdata-ssl/conffiles
 /etc/netdata/
 endef
 
-define Package/netdata/install
+define Package/netdata-ssl/install
 	$(INSTALL_DIR) $(1)/etc/netdata/custom-plugins.d
 	$(CP) $(PKG_INSTALL_DIR)/etc/netdata $(1)/etc
 	$(CP) ./files/netdata.conf $(1)/etc/netdata
@@ -100,4 +103,4 @@ define Package/netdata/install
 	$(INSTALL_BIN) ./files/netdata.init $(1)/etc/init.d/netdata
 endef
 
-$(eval $(call BuildPackage,netdata))
+$(eval $(call BuildPackage,netdata-ssl))

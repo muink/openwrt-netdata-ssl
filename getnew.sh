@@ -1,5 +1,5 @@
 #!/bin/sh
-v='<version>'
+v='23.05'
 git remote add packages https://github.com/openwrt/packages.git
 git fetch packages
 #git branch --track netdata refs/remotes/packages/openwrt-$v

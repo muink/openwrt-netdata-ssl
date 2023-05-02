@@ -80,7 +80,7 @@ start_service() {
 }
 
 stop_service() {
-	#pgrep -f $APPBINARY | xargs kill -9 >/dev/null 2>&1 
+	pgrep -f $APPBINARY | xargs kill -9 >/dev/null 2>&1 
 	return 0
 }
 

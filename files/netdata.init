@@ -17,6 +17,7 @@ get_config() {
 	config_get_bool ennginx $1 nginx_support 0
 	config_get_bool auth $1 auth 0
 	config_get userpw $1 user_passwd 'admin:$apr1$t7qQjoqb$YBHtAb7VGSkjIdObMG.Oy0'
+	[ "$ennginx" == "1" ] && ssl=0
 }
 
 #read_option <option>

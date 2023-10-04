@@ -8,17 +8,20 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=netdata
-PKG_VERSION:=1.33.1
-PKG_RELEASE:=4
+PKG_VERSION:=1.42.2
+PKG_RELEASE:=2
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>, Daniel Engberg <daniel.engberg.lists@pyret.net>
 PKG_LICENSE:=GPL-3.0-or-later
 PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:my-netdata:netdata
 
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/netdata/netdata.git
+PKG_SOURCE_VERSION:=26ed05b8688651be20cd01ffae072ae1e5a59e8e
+PKG_MIRROR_HASH:=e28943e04db85829e7bea46827a92ee3be2fb7fa9d5e42654f966d4ecc006406
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/netdata/netdata/releases/download/v$(PKG_VERSION)
-PKG_HASH:=20ba8695d87187787b27128ac3aab9b09aa29ca6b508c48542e0f7d50ec9322b
 PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
 
 PKG_INSTALL:=1
